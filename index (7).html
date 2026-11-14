@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Explore the Pizza Salvatoré menu, menu categories, locations, North Oshawa restaurant details, specials and helpful information.">
+<title>Pizza Salvatore Menu | Menu, Locations & Specials</title>
+<style>
+/* =========================================================
+   1. DESIGN TOKENS
+========================================================= */
+:root{
+  --red:#c9272c;--red-dark:#9e1d22;--ink:#202020;--muted:#6f6a63;
+  --cream:#fff8ed;--paper:#fffdf9;--gold:#e9b45b;--line:#eadfd1;
+  --green:#314b39;--shadow:0 18px 50px rgba(46,30,15,.10);
+  --radius:22px;--max:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:105px}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.7}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.container{width:min(var(--max),calc(100% - 42px));margin:auto}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--red);font-size:.76rem;font-weight:850;letter-spacing:.16em;text-transform:uppercase}
+.eyebrow:before{content:"";width:25px;height:2px;background:var(--gold)}
+h1,h2,h3,h4,p{margin-top:0}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.08;letter-spacing:-.035em}
+h1{font-size:clamp(2.8rem,7vw,5.8rem);margin:18px 0}
+h2{font-size:clamp(2.1rem,4vw,3.6rem);margin:12px 0 18px}
+h3{font-size:1.55rem;margin-bottom:12px}
+p{color:#514c46}
+.section{padding:88px 0}
+.section-head{max-width:720px;margin-bottom:38px}
+.section-head p{font-size:1.06rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 21px;border-radius:999px;background:var(--red);color:#fff;font-weight:800;border:1px solid var(--red);transition:.2s}
+.btn:hover{background:var(--red-dark);transform:translateY(-2px)}
+.btn-light{background:#fff;color:var(--ink);border-color:#fff}
+.btn-outline{background:transparent;color:var(--ink);border-color:#c9b9a7}
+.btn-outline:hover{color:white;border-color:var(--red)}
+/* =========================================================
+   2. HEADER AND NAVIGATION
+========================================================= */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(255,253,249,.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(234,223,209,.85)}
+.header-inner{height:82px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:11px;min-width:max-content}
+.brand-mark{width:43px;height:43px;border-radius:50%;background:var(--red);display:grid;place-items:center;color:white;font-size:1.45rem;box-shadow:0 5px 14px #c9272c35}
+.brand-name{font-family:Georgia,serif;font-weight:900;font-size:1.25rem;line-height:1}
+.brand-name small{display:block;font:800 .58rem/1.7 Inter,sans-serif;letter-spacing:.2em;color:var(--red)}
+.nav{display:flex;align-items:center;gap:22px}
+.nav a{font-size:.88rem;font-weight:750;color:#514c46;transition:.2s}
+.nav a:hover,.nav a:focus{color:var(--red)}
+.header-cta{padding:11px 17px;font-size:.84rem}
+.menu-toggle{display:none}
+/* =========================================================
+   3. HERO
+========================================================= */
+.hero{position:relative;overflow:hidden;padding:80px 0 76px;background:radial-gradient(circle at 80% 18%,#f4d9b0 0,transparent 27%),linear-gradient(115deg,#fff8ed 0%,#f9ead8 100%)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:54px}
+.hero-copy{position:relative;z-index:2}
+.hero-copy p{max-width:590px;font-size:1.12rem}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.hero-note{display:flex;align-items:center;gap:12px;margin-top:30px;color:var(--muted);font-size:.88rem}
+.hero-note strong{color:var(--ink)}
+.hero-art{position:relative;min-height:440px;display:grid;place-items:center}
+.hero-art:before{content:"";position:absolute;width:min(95%,470px);aspect-ratio:1;border-radius:50%;background:#e9b45b}
+.hero-pizza{position:relative;width:min(100%,470px);aspect-ratio:1;border-radius:50%;border:15px solid #d69a48;background:radial-gradient(circle at 50% 50%,#f5d48b 0 12%,transparent 13%),repeating-conic-gradient(from 8deg,#d94a30 0 8deg,#f5d48b 8deg 18deg,#fff0c9 18deg 29deg);box-shadow:0 28px 55px #7a3d2635;transform:rotate(-9deg)}
+.hero-pizza:before{content:"";position:absolute;inset:7%;border-radius:50%;background:radial-gradient(circle at 20% 25%,#a72c25 0 2.8%,transparent 3.5%),radial-gradient(circle at 72% 24%,#a72c25 0 3%,transparent 3.8%),radial-gradient(circle at 52% 70%,#a72c25 0 3%,transparent 3.8%),radial-gradient(circle at 30% 72%,#a72c25 0 2.7%,transparent 3.5%),radial-gradient(circle at 78% 63%,#a72c25 0 2.8%,transparent 3.5%),radial-gradient(circle at 45% 42%,#47713f 0 2.5%,transparent 3.3%),radial-gradient(circle at 65% 47%,#47713f 0 2.5%,transparent 3.3%);border:3px dashed #f9e4b3}
+.floating-tag{position:absolute;right:0;bottom:35px;background:white;border-radius:16px;padding:15px 19px;box-shadow:var(--shadow);font-weight:850;transform:rotate(3deg)}
+.floating-tag span{display:block;font-size:.72rem;color:var(--muted);font-weight:600}
+/* =========================================================
+   4. PAGE SECTIONS / COMMON COMPONENTS
+========================================================= */
+.page{display:none;min-height:70vh}
+.page:target{display:block}
+body:not(:has(.page:target)) #home{display:block}
+.page-hero{padding:72px 0 58px;background:linear-gradient(120deg,#fff3e3,#f5dfc5)}
+.page-hero p{max-width:720px;font-size:1.08rem}
+.breadcrumb{font-size:.82rem;color:var(--muted);margin-bottom:24px}
+.breadcrumb a{color:var(--red);font-weight:800}
+.content-grid{display:grid;grid-template-columns:1.4fr .6fr;gap:34px;align-items:start}
+.article-card,.side-card,.info-card,.menu-card,.location-card,.contact-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.article-card{padding:clamp(24px,4vw,48px)}
+.article-card h2{font-size:2rem;margin-top:42px}
+.article-card h2:first-child{margin-top:0}
+.article-card h3{margin-top:28px}
+.article-card p{font-size:1rem}
+.article-card ul{padding-left:22px;color:#514c46}
+.article-card li{padding:4px 0}
+.side-card{padding:25px;position:sticky;top:105px}
+.side-card h3{font-size:1.35rem}
+.side-links{display:grid;gap:10px}
+.side-links a{padding:10px 12px;border-radius:10px;background:#fff5e8;color:#514c46;font-weight:750;font-size:.9rem}
+.side-links a:hover{background:#f9e2c8;color:var(--red)}
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.info-card,.menu-card,.location-card{padding:25px}
+.card-icon{width:48px;height:48px;border-radius:15px;background:#fff0dd;display:grid;place-items:center;font-size:1.5rem;margin-bottom:19px}
+.info-card p,.menu-card p,.location-card p{font-size:.94rem;margin-bottom:0}
+.menu-card{position:relative;overflow:hidden}
+.menu-card:after{content:"";position:absolute;width:110px;height:110px;border-radius:50%;background:#fff1df;right:-42px;top:-42px}
+.menu-card h3{position:relative;z-index:1}
+.pill{display:inline-block;background:#f8e6d1;color:#8c382a;padding:5px 10px;border-radius:99px;font-size:.72rem;font-weight:850;letter-spacing:.04em}
+.highlight{background:var(--ink);color:#fff;border-radius:var(--radius);padding:38px}
+.highlight p{color:#e7ddd2}
+.highlight h2{color:#fff}
+.highlight .eyebrow{color:#f3c578}
+.data-table{width:100%;border-collapse:collapse;margin:22px 0;font-size:.92rem}
+.data-table th,.data-table td{text-align:left;padding:13px 14px;border-bottom:1px solid var(--line)}
+.data-table th{background:#fff1df;color:#7f332a}
+.note{padding:17px 20px;border-left:4px solid var(--gold);background:#fff5e8;border-radius:0 12px 12px 0;color:#62584e;font-size:.91rem}
+.faq details{background:white;border:1px solid var(--line);border-radius:13px;padding:17px 20px;margin:10px 0}
+.faq summary{font-weight:850;cursor:pointer}
+.faq details p{margin:13px 0 0}
+.cta-band{background:var(--red);color:white;padding:55px 0}
+.cta-band h2{color:white;margin:0 0 12px}
+.cta-band p{color:#ffe7df;margin:0}
+.cta-inner{display:flex;align-items:center;justify-content:space-between;gap:25px}
+.contact-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:22px}
+.contact-card{padding:30px}
+.contact-line{padding:13px 0;border-bottom:1px solid var(--line)}
+.contact-line:last-child{border:0}
+.contact-line strong{display:block;color:var(--red);font-size:.76rem;text-transform:uppercase;letter-spacing:.1em}
+.contact-form{display:grid;gap:13px}
+.contact-form label{font-weight:750;font-size:.88rem}
+.contact-form input,.contact-form textarea{width:100%;padding:14px;border:1px solid #dfd2c3;border-radius:10px;background:#fffdf9;font:inherit}
+.contact-form textarea{min-height:130px;resize:vertical}
+.contact-form button{cursor:pointer}
+/* =========================================================
+   5. FOOTER
+========================================================= */
+.site-footer{background:#201d1a;color:#fff;padding:60px 0 25px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+.site-footer p,.site-footer a{color:#c8beb4;font-size:.9rem}
+.site-footer h3{font:850 .82rem Inter,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#fff}
+.footer-links{display:grid;gap:9px}
+.footer-links a:hover{color:#f4c36e}
+.footer-bottom{border-top:1px solid #48413b;margin-top:38px;padding-top:20px;display:flex;justify-content:space-between;gap:20px;color:#a99f95;font-size:.8rem}
+/* =========================================================
+   6. RESPONSIVE
+========================================================= */
+@media(max-width:900px){
+ .nav{gap:12px}.nav a{font-size:.78rem}.header-cta{display:none}
+ .hero-grid{gap:25px}.hero-art{min-height:350px}.card-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:700px){
+ .header-inner{height:72px;flex-wrap:wrap}.nav{order:3;width:100%;overflow-x:auto;padding:0 0 12px;gap:18px}
+ .nav a{white-space:nowrap;font-size:.8rem}.site-header{position:relative}
+ .hero{padding:52px 0}.hero-grid{grid-template-columns:1fr}.hero-art{min-height:300px;grid-row:1}
+ .hero-pizza{width:min(78vw,330px);border-width:11px}.floating-tag{right:5%;bottom:10px}
+ .section{padding:62px 0}.content-grid,.contact-layout{grid-template-columns:1fr}
+ .side-card{position:static}.card-grid{grid-template-columns:1fr}
+ .page-hero{padding:52px 0 40px}.cta-inner{align-items:flex-start;flex-direction:column}
+ .footer-grid{grid-template-columns:1fr;gap:25px}.footer-bottom{flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="site-header">
+ <div class="container header-inner">
+  <a class="brand" href="#home" aria-label="Salvator Menu home">
+   <span class="brand-mark">✦</span><span class="brand-name">SALVATOR MENU<small>CANADA FOOD GUIDE</small></span>
+  </a>
+  <nav class="nav" aria-label="Main navigation">
+   <a href="#home">Menu</a><a href="#locations">Locations</a><a href="#north-oshawa">North Oshawa</a><a href="#specials">Specials</a><a href="#about">About</a><a href="#contact">Contact</a>
+  </nav>
+  <a class="btn header-cta" href="https://salvatore.com/en/restaurant/menu" target="_blank" rel="noopener">Official Menu ↗</a>
+ </div>
+</header>
+
+<!-- =========================================================
+     PAGE 1: HOME / PIZZA SALVATORE MENU
+========================================================= -->
+<main>
+<section class="page" id="home">
+ <section class="hero">
+  <div class="container hero-grid">
+   <div class="hero-copy">
+    <span class="eyebrow">A helpful Canadian menu guide</span>
+    <h1>Good food.<br><em>Great choices.</em></h1>
+    <p>Explore the <a href="https://salvatormenu.com/" style="color:var(--red);font-weight:850;text-decoration:underline">Pizza Salvatore Menu</a> with an easy-to-follow guide to pizza styles, poutines, sides, drinks, desserts, locations and ordering tips. Find the details you need before choosing your next meal.</p>
+    <div class="hero-actions"><a class="btn" href="#menu-guide">Explore the menu <span>→</span></a><a class="btn btn-outline" href="#locations">Find locations</a></div>
+    <div class="hero-note"><span>🍕</span><span><strong>Menu information made simple</strong><br>Independent guide · Not the official restaurant site</span></div>
+   </div>
+   <div class="hero-art" aria-label="Illustration of a freshly baked pizza"><div class="hero-pizza"></div><div class="floating-tag">Made for pizza fans<span>Menu • Locations • Helpful tips</span></div></div>
+  </div>
+ </section>
+ <section class="section" id="menu-guide">
+  <div class="container">
+   <div class="section-head"><span class="eyebrow">Explore the choices</span><h2>A menu for every kind of craving</h2><p>Pizza is often the centre of the meal, but a complete menu guide should make it easy to explore more than one category. Use these sections as a starting point, then confirm current availability with your selected restaurant.</p></div>
+   <div class="card-grid">
+    <article class="menu-card"><span class="card-icon">🍕</span><span class="pill">PIZZA</span><h3>Classic & specialty pizzas</h3><p>Compare familiar favourites, meat-topped combinations, vegetable choices and signature recipes. Consider crust, sauce, cheese and toppings when deciding what suits your table.</p></article>
+    <article class="menu-card"><span class="card-icon">🧀</span><span class="pill">POUTINE</span><h3>Quebec-style poutine</h3><p>Explore fries, cheese curds and savoury gravy, along with versions that add chicken, bacon or other toppings. Check serving size and ingredients before ordering.</p></article>
+    <article class="menu-card"><span class="card-icon">🍗</span><span class="pill">SIDES</span><h3>Wings & shareable sides</h3><p>Wings, chicken bites, garlic bread and other sides can round out a meal. They are useful for groups that want a few different flavours to share.</p></article>
+    <article class="menu-card"><span class="card-icon">🥗</span><span class="pill">LIGHTER PICKS</span><h3>Salads & alternatives</h3><p>When available, salads and crustless options can offer alternatives to a traditional pizza meal. Always review ingredients and preparation details.</p></article>
+    <article class="menu-card"><span class="card-icon">🥤</span><span class="pill">DRINKS</span><h3>Cold drinks</h3><p>Soft drinks and bottled beverages are simple additions for family meals, parties and takeaway orders. Sizes and brands may differ by branch.</p></article>
+    <article class="menu-card"><span class="card-icon">🍪</span><span class="pill">DESSERT</span><h3>Sweet finishes</h3><p>Cookies, brownies, dough bites and dessert-style poutines can make a meal feel complete. Check the current local menu for seasonal choices.</p></article>
+   </div>
+  </div>
+ </section>
+ <section class="section" style="background:#fffdf9">
+  <div class="container content-grid">
+   <div>
+    <div class="section-head"><span class="eyebrow">How to use this guide</span><h2>Make a confident menu choice</h2><p>Online menus can feel crowded when every item has a different name, size or combination. A little planning makes ordering easier, especially when several people are sharing a meal.</p></div>
+    <h3>Start with the group and appetite</h3><p>Think about how many people will eat, whether pizza is the main dish, and whether you want sides or dessert. A smaller group may prefer one pizza with a side, while a family gathering may need a mix of sizes and flavours. The right amount depends on appetite, age, meal time and the other food being served.</p>
+    <h3>Compare ingredients, not only names</h3><p>Two pizzas can sound similar but taste very different because of their sauce, cheese, seasoning and toppings. A tomato-based pizza usually has a familiar savoury profile. A garlic or creamy base may feel richer. Vegetable toppings can add freshness, while meat toppings can make a pizza more filling. Read the item description and ask the restaurant about anything unclear.</p>
+    <h3>Check size and crust options</h3><p>Menu sizes are not always identical across restaurants. Look at the listed diameter, slice count and available crust styles rather than assuming a size has the same meaning everywhere. If you are ordering for a group, consider whether people prefer a thin, crisp base or a thicker, softer crust.</p>
+    <h3>Review the final checkout total</h3><p>The menu price may not be the final amount. Taxes, delivery charges, service fees, optional dips and extra toppings can affect the total. Compare pickup and delivery before paying, and check that the delivery address is correct.</p>
+   </div>
+   <aside class="side-card"><h3>Quick navigation</h3><div class="side-links"><a href="#locations">Browse restaurant locations →</a><a href="#north-oshawa">North Oshawa branch guide →</a><a href="#specials">Special offers guide →</a><a href="#about">About this website →</a><a href="#contact">Send a correction →</a></div><p class="note" style="margin-top:20px">This website is an independent information resource. It does not take orders or process payments.</p></aside>
+  </div>
+ </section>
+ <section class="section">
+  <div class="container">
+   <div class="section-head"><span class="eyebrow">A practical checklist</span><h2>Before you place an order</h2><p>Use this short checklist to avoid common ordering mistakes and make sure the meal matches your needs.</p></div>
+   <div class="card-grid">
+    <article class="info-card"><span class="card-icon">01</span><h3>Confirm the branch</h3><p>Choose the restaurant that serves your area. Delivery zones and opening hours can vary by location.</p></article>
+    <article class="info-card"><span class="card-icon">02</span><h3>Check the details</h3><p>Review size, toppings, crust, add-ons and allergen information before adding an item to your basket.</p></article>
+    <article class="info-card"><span class="card-icon">03</span><h3>Review your total</h3><p>Check taxes, fees, discounts and pickup or delivery timing on the official ordering channel.</p></article>
+   </div>
+  </div>
+ </section>
+ <section class="section" style="background:#fffdf9">
+  <div class="container">
+   <div class="section-head"><span class="eyebrow">Common questions</span><h2>Pizza menu FAQs</h2></div>
+   <div class="faq">
+    <details><summary>Where can I check the latest Pizza Salvatoré menu?</summary><p>Use the restaurant's official website or ordering app for the most current menu, prices, availability and branch-specific choices. This independent guide is designed to help visitors understand the menu categories.</p></details>
+    <details><summary>Are menu prices the same at every location?</summary><p>Not necessarily. Prices, taxes, promotions and delivery charges can differ by restaurant and ordering channel. Confirm the total with the branch before completing your order.</p></details>
+    <details><summary>How can I check allergens?</summary><p>Contact the restaurant directly and review its current allergen information. If you have a serious allergy, explain it clearly and ask about cross-contact and preparation practices.</p></details>
+    <details><summary>Can I order from this website?</summary><p>No. This is an independent informational website. Use the official Salvatoré website or app to place an order.</p></details>
+   </div>
+  </div>
+ </section>
+ <section class="cta-band"><div class="container cta-inner"><div><h2>Ready to explore nearby restaurants?</h2><p>Browse our location guide and check the official branch details before travelling.</p></div><a class="btn btn-light" href="#locations">View locations →</a></div></section>
+</section>
+
+<!-- =========================================================
+     PAGE 2: LOCATIONS
+========================================================= -->
+<section class="page" id="locations">
+ <div class="page-hero"><div class="container"><div class="breadcrumb"><a href="#home">Home</a> / Locations</div><span class="eyebrow">Find a restaurant</span><h1>Pizza Salvatoré<br>Locations</h1><p>Use this <a href="https://salvatormenu.com/pizza-salvatore-locations/" style="color:var(--red);font-weight:850;text-decoration:underline">Pizza Salvatore Locations</a> guide to understand how to find a nearby branch, compare service options and confirm local restaurant details before you visit or order.</p></div></div>
+ <section class="section"><div class="container">
+  <div class="section-head"><span class="eyebrow">Location directory</span><h2>Find the right branch for your area</h2><p>Restaurant availability is local. A branch may offer delivery, pickup and online ordering, while another location may have different service hours or delivery boundaries. Always use the official location finder to confirm the branch that serves your address.</p></div>
+  <div class="card-grid">
+   <article class="location-card"><span class="card-icon">📍</span><h3>Quebec</h3><p>Quebec is the brand's home province and an important part of its restaurant network. Search by city or postal code to find a branch, check its menu and confirm local service.</p></article>
+   <article class="location-card"><span class="card-icon">📍</span><h3>Ontario</h3><p>Ontario visitors can search for participating locations by community. Check the specific branch page for address, phone number, opening hours and available ordering methods.</p></article>
+   <article class="location-card"><span class="card-icon">📍</span><h3>Atlantic Canada</h3><p>Some communities in Atlantic Canada may be served by local branches. Confirm current locations and delivery coverage through the official restaurant directory.</p></article>
+  </div>
+ </div></section>
+ <section class="section" style="background:#fffdf9"><div class="container content-grid">
+  <article class="article-card">
+   <h2>How to find a Pizza Salvatoré near you</h2>
+   <p>The simplest way to find a restaurant is to begin with your town, city or postal code. Open the official restaurant website and use its location finder. Search results can help identify nearby branches, but the branch page is the best place to verify its address and services.</p>
+   <h3>1. Search by city or postal code</h3><p>Use a complete city name or postal code so the results are relevant to your area. If more than one branch appears, compare the distance and address carefully. A branch that looks close on a map may not deliver to your street.</p>
+   <h3>2. Confirm the full address</h3><p>Check the street number, road name, city and postal code. This is especially important when two locations have similar names. Save the correct address before setting out, and use a navigation app for the final route.</p>
+   <h3>3. Review opening hours</h3><p>Opening hours can change on holidays, during severe weather or because of local operating needs. Do not rely on an old directory listing. Check the official branch page or call the restaurant if you are planning a late pickup.</p>
+   <h3>4. Check delivery coverage</h3><p>Delivery zones are usually set by the individual restaurant. Enter your full address in the official ordering system to confirm whether delivery is available. The system should show the applicable delivery fee and estimated timing before you pay.</p>
+   <h3>5. Compare pickup and delivery</h3><p>Pickup may be convenient if you are already nearby. Delivery can be useful when you are at home or ordering for a group. Compare the final total, estimated wait and any available online offers before choosing.</p>
+   <h2>What information should a location page include?</h2><p>A useful restaurant listing should provide a clear address, phone number, opening schedule, service options and a direct route to the official ordering page. It should also explain whether the details are confirmed or may change. When information is missing, contact the restaurant rather than relying on assumptions.</p>
+   <h3>Address and contact details</h3><p>Keep the address in a format that is easy to copy into a map. A phone number is helpful when you need to confirm a large order, ask about accessibility or check whether a menu item is available. If a listing has an outdated phone number, use the official branch finder to locate the current contact information.</p>
+   <h3>Services and local availability</h3><p>Not every restaurant offers exactly the same services. Some may provide delivery and pickup, while others may have different options depending on staffing, demand or local rules. Catering and large group orders should always be arranged directly with the restaurant in advance.</p>
+   <h2>Planning a visit</h2><p>Before leaving, check the latest hours and address. If you are visiting during a busy dinner period, allow extra time for parking and order preparation. For a pickup order, confirm the name on the order and make sure you have collected all boxes, sides, sauces and drinks before leaving.</p>
+   <p>For a delivery order, enter apartment numbers, building access details and a working contact number where the ordering system allows it. These small details can help the driver complete the delivery smoothly.</p>
+  </article>
+  <aside class="side-card"><h3>Location shortcuts</h3><div class="side-links"><a href="https://salvatore.com/en/restaurants" target="_blank" rel="noopener">Official restaurant finder ↗</a><a href="#north-oshawa">North Oshawa location guide →</a><a href="#home">Explore menu categories →</a><a href="#contact">Report a listing correction →</a></div><p class="note" style="margin-top:20px">Branch details can change. Confirm hours, delivery areas and contact details with the restaurant.</p></aside>
+ </div></section>
+ <section class="section"><div class="container"><div class="section-head"><span class="eyebrow">Location planning</span><h2>Compare the details that matter</h2></div><div class="card-grid">
+  <article class="info-card"><span class="card-icon">🕒</span><h3>Opening schedule</h3><p>Check weekday, weekend and holiday hours. A current official listing is more reliable than an old search result.</p></article>
+  <article class="info-card"><span class="card-icon">🚗</span><h3>Pickup access</h3><p>Check the address, parking arrangements and estimated preparation time before travelling to collect an order.</p></article>
+  <article class="info-card"><span class="card-icon">🛵</span><h3>Delivery zone</h3><p>Confirm your exact address in the ordering system. Delivery coverage can stop at nearby streets or postal-code boundaries.</p></article>
+ </div></div></section>
+ <section class="section" style="background:#fffdf9"><div class="container"><div class="section-head"><span class="eyebrow">FAQs</span><h2>Location questions</h2></div><div class="faq">
+  <details><summary>How do I find the closest Pizza Salvatoré?</summary><p>Use the official restaurant finder and search with your city or postal code. Confirm the branch address and delivery coverage before ordering.</p></details>
+  <details><summary>Do all locations have the same opening hours?</summary><p>No. Hours may vary by branch, day and holiday. Check the official branch listing for the latest schedule.</p></details>
+  <details><summary>Can I use one branch's menu at another branch?</summary><p>Menu availability and prices may vary. Select the correct branch in the official ordering system to see the options available to your address.</p></details>
+ </div></div></section>
+</section>
+
+<!-- =========================================================
+     PAGE 3: NORTH OSHAWA
+========================================================= -->
+<section class="page" id="north-oshawa">
+ <div class="page-hero"><div class="container"><div class="breadcrumb"><a href="#home">Home</a> / <a href="#locations">Locations</a> / North Oshawa</div><span class="eyebrow">Ontario branch guide</span><h1>Pizza Salvatoré<br>North Oshawa</h1><p>Explore this <a href="https://salvatormenu.com/pizza-salvatore-north-oshawa/" style="color:var(--red);font-weight:850;text-decoration:underline">Pizza Salvatoré North Oshawa</a> guide for address details, service options, menu categories and practical tips for planning a pickup or delivery order.</p></div></div>
+ <section class="section"><div class="container">
+  <div class="highlight"><span class="eyebrow">Branch information</span><h2>North Oshawa restaurant</h2><p><strong>Address:</strong> 1295 Ritson Road North, Oshawa, Ontario, Canada. The official restaurant listing has also displayed the postal code L1G 8B9. Confirm the address and current contact details before travelling.</p><p><strong>Phone:</strong> +1 (289) 222-3555 — verify before calling, as contact details can change.</p><a class="btn btn-light" href="https://salvatore.com/en/restaurant/sal-north-oshawa" target="_blank" rel="noopener">Official North Oshawa page ↗</a></div>
+ </div></section>
+ <section class="section" style="background:#fffdf9"><div class="container content-grid">
+  <article class="article-card">
+   <h2>About the North Oshawa restaurant</h2><p>North Oshawa residents looking for pizza, poutine or a convenient group meal can use the local restaurant listing to check the latest service details. The branch is listed at 1295 Ritson Road North in Oshawa. Before setting out, confirm the address, hours and availability through the official restaurant page.</p>
+   <h3>Delivery for a convenient meal at home</h3><p>Delivery is useful when you are relaxing at home, hosting friends or arranging food for a family evening. Enter your complete address in the official ordering system to check whether your street is inside the delivery zone. The available delivery time and fee should be reviewed at checkout, because they can change with distance and demand.</p>
+   <p>For a smoother delivery, include apartment or unit details and any useful entry instructions. Keep your phone nearby in case the driver or restaurant needs to confirm an order detail. When the food arrives, check that the order includes the correct pizzas, sides, sauces and drinks.</p>
+   <h3>Pickup and takeaway</h3><p>Pickup can be a practical option for people travelling along Ritson Road or living nearby. Place the order through the official channel, select the North Oshawa branch and review the estimated collection time. Arriving too early may mean waiting while the order is prepared; arriving much later can affect food temperature.</p>
+   <p>Before leaving the counter, check the order summary. Make sure special instructions have been followed and that the number of boxes matches your receipt. If something is missing, tell the staff before you leave so the issue can be resolved quickly.</p>
+   <h3>Online ordering</h3><p>Online ordering makes it easier to review the menu and customize an order. Select the correct branch first, then check the available pizza sizes, crust choices, toppings, sides and drinks. If the ordering system offers a notes field, use it for simple preparation requests, but contact the restaurant for allergy-related questions.</p>
+   <h2>Menu categories to explore in Oshawa</h2>
+   <h3>Pizza favourites</h3><p>Pizza choices can include classic cheese and pepperoni styles, all-dressed combinations, meat-focused recipes and vegetable-topped options. A useful way to compare them is to look at the base sauce, cheese, main toppings and spice level. If you are sharing, a familiar flavour can be paired with a more adventurous choice.</p>
+   <h3>Poutine and sides</h3><p>Poutine combines fries, cheese curds and gravy. Other versions may add chicken or additional toppings. Sides such as wings, chicken bites and garlic bread can make an order more suitable for a group. Confirm the exact local options and sizes before ordering.</p>
+   <h3>Drinks and desserts</h3><p>Cold drinks can be added to a family meal, while cookies or other desserts provide a sweet finish. Availability may vary by branch and season, so use the local online menu for the most reliable selection.</p>
+   <h2>Planning a group order</h2><p>If you are ordering for a birthday, sports team, office lunch or family gathering, plan the order early. Estimate how many people will eat, ask about available group options and confirm the pickup or delivery time. Large orders can take longer during peak periods, so contact the restaurant ahead of time.</p>
+   <p>When different guests have different preferences, choose a balanced mix of familiar and varied toppings. Keep sauces and sides separate where possible, and label boxes if the order is large. If a guest has an allergy or dietary restriction, speak directly with the restaurant rather than relying on a menu label alone.</p>
+   <h2>Getting ready for pickup</h2><p>Check the latest opening hours and use a map to plan your route to 1295 Ritson Road North. Allow extra time during rush hour or poor weather. If the restaurant is busy, follow the staff's collection instructions and avoid blocking the pickup area.</p>
+   <h2>Important information to verify</h2><p>Opening hours, prices, promotions, menu items and delivery boundaries can change. The information on this page is a general guide and should not replace the official restaurant listing. For current details, use the official North Oshawa page or contact the restaurant directly.</p>
+  </article>
+  <aside class="side-card"><h3>North Oshawa quick facts</h3><div class="side-links"><a href="https://salvatore.com/en/restaurant/sal-north-oshawa" target="_blank" rel="noopener">Official branch details ↗</a><a href="https://salvatore.com/en/restaurant/menu" target="_blank" rel="noopener">Official menu ↗</a><a href="#locations">Browse other locations →</a><a href="#contact">Send a correction →</a></div><p class="note" style="margin-top:20px">Hours and service availability are subject to change. Check the official listing before visiting.</p></aside>
+ </div></section>
+ <section class="section"><div class="container"><div class="section-head"><span class="eyebrow">Helpful answers</span><h2>North Oshawa FAQs</h2></div><div class="faq">
+  <details><summary>Where is Pizza Salvatoré North Oshawa located?</summary><p>The official restaurant page lists 1295 Ritson Road North, Oshawa, Ontario, Canada. Confirm the current address and postal code before travelling.</p></details>
+  <details><summary>Does the North Oshawa branch offer delivery?</summary><p>The official listing describes delivery and takeout services. Enter your address in the official ordering system to confirm coverage and timing.</p></details>
+  <details><summary>What time does the restaurant open?</summary><p>Published hours can change. Check the official branch page for the current schedule, including holiday hours.</p></details>
+  <details><summary>How can I check the North Oshawa menu?</summary><p>Choose North Oshawa on the official website or app to view the menu available at that branch.</p></details>
+ </div></div></section>
+</section>
+
+<!-- =========================================================
+     PAGE 4: SPECIALS
+========================================================= -->
+<section class="page" id="specials">
+ <div class="page-hero"><div class="container"><div class="breadcrumb"><a href="#home">Home</a> / Specials</div><span class="eyebrow">Offers & savings guide</span><h1>Special<br>Salvatore</h1><p>Use this <a href="https://salvatormenu.com/salvatore-coupon/" style="color:var(--red);font-weight:850;text-decoration:underline">Special Salvatore</a> guide to understand how to look for current offers, compare meal combinations and check coupon terms before placing an order.</p></div></div>
+ <section class="section"><div class="container"><div class="section-head"><span class="eyebrow">Smart ordering</span><h2>Find value without the guesswork</h2><p>Promotions can change by date, location and ordering channel. Rather than relying on an old coupon listing, compare the current offer with the regular menu and read the terms before checkout.</p></div>
+ <div class="card-grid">
+  <article class="info-card"><span class="card-icon">🍕</span><h3>Pizza combinations</h3><p>Look for offers that combine pizzas or pair a pizza with sides. Compare the included size and toppings with the price of ordering each item separately.</p></article>
+  <article class="info-card"><span class="card-icon">👨‍👩‍👧‍👦</span><h3>Family meals</h3><p>Family combinations can be convenient for several people. Check serving sizes and make sure the included food suits everyone's preferences.</p></article>
+  <article class="info-card"><span class="card-icon">📱</span><h3>Online-only offers</h3><p>Some promotions may be limited to the website or app. Read the conditions and confirm that the selected branch accepts the offer.</p></article>
+ </div></div></section>
+ <section class="section" style="background:#fffdf9"><div class="container content-grid">
+  <article class="article-card">
+   <h2>How to check current Salvatore specials</h2><p>The best place to check a promotion is the official restaurant website or app. Start by selecting your location, because a deal may be available in one area but not another. Review the promotion details and check the date or time period during which it can be used.</p>
+   <h3>Read the offer carefully</h3><p>Promotions can have conditions such as minimum purchase amounts, selected sizes, limited toppings or specific ordering channels. A discount may apply only to regular-priced items, while extras and delivery fees may be excluded. Read the full terms before assuming a deal will reduce every part of the order.</p>
+   <h3>Compare the real total</h3><p>A bundle is not automatically the best value for every group. Compare the bundle price with the cost of the items you actually want. If a meal includes food that nobody will eat, a smaller order may be more practical. Include taxes, delivery charges and optional extras in the comparison.</p>
+   <h3>Check whether a coupon is valid</h3><p>Coupon codes may expire, be limited to new customers or apply only to certain menu items. Enter the code in the official checkout field and check that the discount appears before payment. If it does not work, review the terms or contact the restaurant instead of repeatedly trying unrelated codes.</p>
+   <h2>Ways to plan a lower-cost pizza order</h2>
+   <h3>Choose the right amount of food</h3><p>Estimate the number of people and their appetites. Ordering too much can waste food, while ordering too little can make a meal inconvenient. Consider whether you are serving sides, salads or dessert alongside pizza.</p>
+   <h3>Limit unnecessary extras</h3><p>Extra toppings, premium crusts, dips and drinks can raise the total. Decide which extras matter most to the group and skip the ones that are unlikely to be used. This is not about avoiding everything extra; it is about choosing intentionally.</p>
+   <h3>Compare pickup with delivery</h3><p>Pickup may avoid a delivery charge, but it is only useful if travelling to the restaurant is practical. Delivery can be worth the added cost when the group is large or the restaurant is far away. Compare the final checkout totals rather than looking at the menu price alone.</p>
+   <h3>Order through the correct branch</h3><p>Make sure the branch selected in the ordering system is the one serving your address. Promotions and menu prices may differ between locations. The correct location also helps provide a more accurate delivery estimate.</p>
+   <h2>Planning specials for a group</h2><p>For a family night or small gathering, begin with the number of guests and any dietary needs. Choose a mix of familiar pizzas and a few sides that can be shared. If the offer includes a fixed number of items, check whether you can customize the toppings or sizes. For a larger event, contact the restaurant directly and ask about advance ordering.</p>
+   <p>Keep the order simple enough to manage. A clear list of pizzas, sizes, sides, drinks and special requests reduces confusion. Confirm the collection or delivery time and keep a copy of the order confirmation until the food arrives.</p>
+   <h2>Why coupon information can become outdated</h2><p>Restaurants update promotions frequently. A code that worked last month may have expired, and a promotion shown on a third-party page may not be recognized at checkout. Treat coupon directories as a starting point only. The official checkout is the final test of whether a promotion is currently accepted.</p>
+   <p>Be careful with websites that ask for unnecessary personal details, payment information or app installations just to reveal a coupon. A legitimate promotion should be clear about its conditions. If an offer looks suspicious, do not provide sensitive information.</p>
+   <h2>Before you pay</h2><p>Check the selected location, items, sizes, customizations, coupon discount, taxes, fees and delivery address. Make sure the final total matches what you expect. Save the confirmation number or email in case you need to ask the restaurant about your order.</p>
+  </article>
+  <aside class="side-card"><h3>Offer-check checklist</h3><div class="side-links"><a href="https://salvatore.com/" target="_blank" rel="noopener">Check official promotions ↗</a><a href="https://salvatore.com/en/restaurant/menu" target="_blank" rel="noopener">Compare official menu ↗</a><a href="#home">Menu guide →</a><a href="#contact">Report an expired offer →</a></div><p class="note" style="margin-top:20px">We do not guarantee coupon codes or discounts. Confirm every offer in the official checkout.</p></aside>
+ </div></section>
+ <section class="section"><div class="container"><div class="section-head"><span class="eyebrow">FAQs</span><h2>Specials and coupon questions</h2></div><div class="faq">
+  <details><summary>Where can I find current Pizza Salvatoré deals?</summary><p>Check the official restaurant website or app after selecting your branch. Promotions may differ by location and date.</p></details>
+  <details><summary>Why is my coupon code not working?</summary><p>It may have expired, may not apply to the selected items or may be restricted to a particular branch or ordering channel. Review the terms and check with the restaurant.</p></details>
+  <details><summary>Can I combine two promotions?</summary><p>Not all offers can be combined. Read the promotion terms or ask the restaurant before placing the order.</p></details>
+ </div></div></section>
+</section>
+
+<!-- =========================================================
+     PAGE 5: ABOUT US
+========================================================= -->
+<section class="page" id="about">
+ <div class="page-hero"><div class="container"><div class="breadcrumb"><a href="#home">Home</a> / About Us</div><span class="eyebrow">Who we are</span><h1>About<br>Salvator Menu</h1><p>Welcome to our <a href="https://salvatormenu.com/about-us/" style="color:var(--red);font-weight:850;text-decoration:underline">About Us</a> page. We are an independent information resource created to make menu details, restaurant locations and food guides easier to explore.</p></div></div>
+ <section class="section"><div class="container content-grid">
+  <article class="article-card">
+   <h2>Our purpose</h2><p>Salvator Menu is an independent website for people who want to understand menu choices before deciding what to order. Restaurant information can be spread across multiple pages, apps and listings. Our goal is to organize useful details into clear sections so visitors can find answers without unnecessary confusion.</p>
+   <p>We cover topics such as menu categories, popular food choices, ingredients, prices where available, nutrition information, restaurant locations, ordering methods and general dining tips. The exact information on a page depends on the subject and the sources available at the time it is prepared.</p>
+   <h2>What we publish</h2>
+   <h3>Menu guides</h3><p>Our menu guides explain food categories and help readers compare choices. We aim to describe items in plain language, highlight the details that matter and remind visitors to check the current local menu before ordering. Restaurant menus can change, so a guide should be treated as a helpful overview rather than a promise that every item is available everywhere.</p>
+   <h3>Location information</h3><p>Location pages help visitors understand how to find a branch and what details to verify. Useful information can include a street address, phone number, opening schedule and service options. We encourage readers to confirm these details with the official restaurant listing, particularly before travelling or placing a time-sensitive order.</p>
+   <h3>Offers and ordering tips</h3><p>Promotions can have different conditions and expiry dates. We explain how to review a deal, compare the final total and check whether a coupon is accepted. We do not want visitors to rely on a code simply because it appears on a page. The official checkout is the best place to confirm an offer.</p>
+   <h3>Food and nutrition topics</h3><p>When discussing calories, ingredients or nutrition, we aim to make the information understandable and to identify estimates where appropriate. Portion sizes and recipes can change. People with allergies or specific dietary needs should always consult the restaurant's current ingredient and allergen information.</p>
+   <h2>Our editorial approach</h2>
+   <h3>Clarity comes first</h3><p>We prefer simple language, descriptive headings and useful organization. Readers should be able to scan a page and quickly understand what it covers. When a subject needs more detail, we break it into sections rather than placing everything in one long paragraph.</p>
+   <h3>Accuracy and verification</h3><p>We aim to use reliable sources and to distinguish official information from general guidance. Details such as prices, opening hours and promotions can change quickly. Where possible, we point readers toward the official restaurant page for confirmation. If we cannot verify a detail, we avoid presenting it as a guaranteed fact.</p>
+   <h3>Updates and corrections</h3><p>We welcome feedback when a page appears outdated or unclear. A useful correction includes the page address, the detail that needs attention and a reliable source showing the updated information. We review feedback and make changes when appropriate.</p>
+   <h3>Useful content, not filler</h3><p>Our aim is to answer real questions. A longer page is not automatically a better page. We focus on explaining the topic, addressing common concerns and helping visitors take the next step. We avoid adding unnecessary repetition simply to increase word count.</p>
+   <h2>Independent website disclosure</h2><p>Salvator Menu is an independent informational website. Unless a page clearly states otherwise, we are not affiliated with, sponsored by or officially endorsed by Pizza Salvatoré or any restaurant, food company or brand mentioned on this website. Brand names, trademarks, logos and product names belong to their respective owners.</p>
+   <p>We do not operate restaurant kitchens, manage delivery drivers, accept restaurant orders or process payments. For orders, refunds, complaints about food quality, employment questions or franchise inquiries, contact the relevant company through its official channels.</p>
+   <h2>How readers can help</h2><p>Readers can help us improve by reporting outdated information, suggesting topics and sharing clear sources. If a menu item has changed, tell us which location and when you checked it. If a price is different, explain whether it came from the restaurant's website, app or in-store menu. Context makes it easier to review the issue responsibly.</p>
+   <h2>Thank you for visiting</h2><p>We appreciate every visitor who uses this guide to plan a meal or learn about a menu. We will continue working to make our pages clear, useful and transparent about what we know and what should be confirmed with an official source.</p>
+  </article>
+  <aside class="side-card"><h3>Explore the website</h3><div class="side-links"><a href="#home">Pizza menu guide →</a><a href="#locations">Restaurant locations →</a><a href="#north-oshawa">North Oshawa guide →</a><a href="#specials">Specials and coupons →</a><a href="#contact">Contact our team →</a></div><p class="note" style="margin-top:20px">Independent information site. Not the official restaurant website.</p></aside>
+ </div></section>
+</section>
+
+<!-- =========================================================
+     PAGE 6: CONTACT US
+========================================================= -->
+<section class="page" id="contact">
+ <div class="page-hero"><div class="container"><div class="breadcrumb"><a href="#home">Home</a> / Contact Us</div><span class="eyebrow">We welcome feedback</span><h1>Contact<br>Our Team</h1><p>Visit our <a href="https://salvatormenu.com/contact-us/" style="color:var(--red);font-weight:850;text-decoration:underline">Contact Us</a> page if you have a question about this website, want to report information that may be incorrect or would like to suggest a useful food topic.</p></div></div>
+ <section class="section"><div class="container">
+  <div class="section-head"><span class="eyebrow">Get in touch</span><h2>How can we help?</h2><p>We value clear, specific feedback. Choose the subject that best describes your message and include the page link or relevant details so we can understand your request.</p></div>
+  <div class="contact-layout">
+   <div class="contact-card"><h3>Contact information</h3><div class="contact-line"><strong>General questions</strong><span>salvatormenu@gmail.com</span></div><div class="contact-line"><strong>Corrections</strong><span>Include the page URL and the information that needs review.</span></div><div class="contact-line"><strong>Topic suggestions</strong><span>Suggest menu, ingredient, nutrition, location or food-guide topics.</span></div><div class="contact-line"><strong>Business inquiries</strong><span>Use the email address for partnership and collaboration questions.</span></div><p class="note" style="margin-top:20px">We are an independent information website. For food orders, delivery issues, refunds or restaurant service, contact the restaurant directly.</p></div>
+   <div class="contact-card"><h3>Send a message</h3><p>This sample form is a visual HTML/CSS layout only. It does not submit or store messages because this website is built without JavaScript or a server-side form service. Use the email address shown on this page to contact the website team.</p><form class="contact-form" action="mailto:salvatormenu@gmail.com" method="post" enctype="text/plain"><label for="visitor-name">Your name</label><input id="visitor-name" name="Name" type="text" placeholder="Enter your name"><label for="visitor-email">Email address</label><input id="visitor-email" name="Email" type="email" placeholder="you@example.com"><label for="visitor-topic">Message subject</label><input id="visitor-topic" name="Subject" type="text" placeholder="How can we help?"><label for="visitor-message">Your message</label><textarea id="visitor-message" name="Message" placeholder="Write your message here..."></textarea><button class="btn" type="submit">Open email application →</button></form></div>
+  </div>
+ </div></section>
+ <section class="section" style="background:#fffdf9"><div class="container content-grid">
+  <article class="article-card">
+   <h2>Report incorrect information</h2><p>Restaurant information can change. A menu item may be removed, a price may be updated, a location may change its hours or a promotion may expire. If you notice something that appears incorrect on our website, please send us a clear correction.</p>
+   <h3>What to include</h3><ul><li>The URL of the page where you found the information.</li><li>The exact text, price, menu item or detail that appears incorrect.</li><li>The updated information, if you know it.</li><li>The restaurant location and date when you checked it.</li><li>A reliable reference, such as an official menu or branch page, if available.</li></ul>
+   <p>We review the information and may update the page when the correction can be reasonably verified. We cannot guarantee that every suggestion will result in a change, but useful evidence helps us assess it.</p>
+   <h2>Suggest a topic</h2><p>If you searched for a menu item or restaurant detail and could not find a clear answer, tell us what you were looking for. Suggestions may include menu categories, ingredients, portion sizes, nutrition topics, location guides, price comparisons or explanations of ordering options.</p>
+   <h2>Restaurant-related support</h2><p>Because this is an independent guide, we cannot access restaurant order systems or resolve restaurant service issues. If your order is late, an item is missing, a payment needs review or you want to request a refund, contact the restaurant or ordering platform that processed the transaction. For urgent food allergy questions, speak directly with the restaurant before ordering.</p>
+   <h2>Privacy and message details</h2><p>Please do not send passwords, payment card numbers, government identification numbers or other sensitive personal information. Share only the details needed to understand your question. If you are reporting an issue with a public menu page, the page link and the relevant menu detail are usually enough.</p>
+   <h2>Our response process</h2><p>We review messages as time allows. Some questions may need a source check before we can provide a useful answer. A correction request with a direct official reference is easier to review than a message that only says a page is wrong. We appreciate your patience while we assess feedback.</p>
+  </article>
+  <aside class="side-card"><h3>Before contacting us</h3><div class="side-links"><a href="#about">Read about this website →</a><a href="#home">Browse the menu guide →</a><a href="#locations">Check location information →</a><a href="https://salvatore.com/" target="_blank" rel="noopener">Visit official restaurant website ↗</a></div></aside>
+ </div></section>
+</section>
+</main>
+
+<footer class="site-footer">
+ <div class="container">
+  <div class="footer-grid">
+   <div><a class="brand" href="#home"><span class="brand-mark">✦</span><span class="brand-name" style="color:white">SALVATOR MENU<small style="color:#e9b45b">CANADA FOOD GUIDE</small></span></a><p style="margin-top:20px;max-width:360px">An independent informational guide to menu categories, restaurant locations, offers and helpful dining information.</p></div>
+   <div><h3>Explore</h3><div class="footer-links"><a href="#home">Pizza Salvatore Menu</a><a href="#locations">Pizza Salvatore Locations</a><a href="#north-oshawa">North Oshawa</a><a href="#specials">Special Salvatore</a></div></div>
+   <div><h3>Information</h3><div class="footer-links"><a href="#about">About Us</a><a href="#contact">Contact Us</a><a href="https://salvatore.com/" target="_blank" rel="noopener">Official restaurant website ↗</a></div></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Salvator Menu. Independent informational website.</span><span>All trademarks and brand names belong to their respective owners.</span></div>
+ </div>
+</footer>
+</body>
+</html>
